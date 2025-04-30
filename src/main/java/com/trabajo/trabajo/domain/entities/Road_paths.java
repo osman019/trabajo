@@ -15,29 +15,29 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-@Table(name = "states")
+@Table(name = "road_paths")
 @Entity
-public class State {
+public class Road_paths {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
-    @Column(name = "name_state", length = 50, nullable = false, unique = true)
-    String nameState;
+    @Column(name = "isactive", columnDefinition = "BOOLEAN")
+    private boolean isactive;
 
-    @Column(name = "abbreviation", length = 50, nullable = false, unique = true)
-    String abbreviation;
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date created_at;
 
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date updated_at;
+
+    @Column(name = "image_path", length = 80, nullable = true, unique = true)
+    String image_path;
+
+    @Column(name = "path_name", length = 80, nullable = true, unique = true)
+    String pathname;
+
+    @Column(name = "description", length = 80, nullable = true, unique = true)
+    String description;
+
 }
-
-// @Column(name = "created_at")
-// private LocalDateTime createdAt;
-// @Column(name = "updated_at")
-// private LocalDateTime updatedAt;
-
-// @Column(columnDefinition="DATE")
-// LocalDate datePresentation;
