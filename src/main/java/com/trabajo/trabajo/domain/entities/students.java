@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.Getter;
@@ -15,7 +17,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "students")
 @Entity
-public class studens {
+public class students {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
@@ -34,4 +36,8 @@ public class studens {
 
     @Column(name = "email", length = 50, nullable = true, unique = true)
     String email;
+
+      @ManyToOne
+    @JoinColumn(name = "school_id", nullable = false)
+    private Schools school;
 }

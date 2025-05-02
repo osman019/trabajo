@@ -1,12 +1,15 @@
 package com.trabajo.trabajo.domain.entities;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -25,7 +28,7 @@ public class Country {
     int id;
 
     @Column(name = "country_name", length = 50, nullable = false, unique = true)
-    String nameCountry;
+    String countryname;
 
     @Temporal(TemporalType.TIMESTAMP)
     private java.util.Date created_at;
@@ -37,5 +40,6 @@ public class Country {
     // CascadeType.ALL)
     // @JsonManagedReference
     // private Set<Region> regions = new HashSet<>();
-
+ @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<State> states;
 }
