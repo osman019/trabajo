@@ -2,7 +2,7 @@ package com.trabajo.trabajo.domain.entities;
 
 import java.util.List;
 
-import javax.security.auth.Subject;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -42,6 +42,6 @@ public class Chapters {
     String chaptersummary;
 
     @OneToMany(mappedBy = "chapters", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-private List<Subject> subjects;
+    private List<Subchapters> subchapters;
 
 }
